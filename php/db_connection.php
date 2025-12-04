@@ -1,136 +1,108 @@
 <?php
-require_once 'config.php';
+// php/db_connection.php - معدل للـ SQLite
 
-class Database {
+require_once __DIR__ . '/config.php';
+
+class DatabaseConnection {
     private static $instance = null;
-    private $conn;
+    private $db;
     
     private function __construct() {
-        try {
-            $this->conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-            
-            if ($this->conn->connect_error) {
-                throw new Exception("فشل الاتصال بقاعدة البيانات: " . $this->conn->connect_error);
-            }
-            
-            $this->conn->set_charset("utf8mb4");
-            
-        } catch (Exception $e) {
-            die(json_encode([
-                'error' => true,
-                'message' => $e->getMessage()
-            ]));
-        }
+        $this->db = get_db();
+        $this->create_tables();
+        $this->seed_data();
     }
     
-    public static function getConnection() {
+    public static function getInstance() {
         if (self::$instance === null) {
-            self::$instance = new Database();
+            self::$instance = new self();
         }
-        return self::$instance->conn;
+        return self::$instance;
     }
     
-    public static function closeConnection() {
-        if (self::$instance !== null) {
-            self::$instance->conn->close();
-            self::$instance = null;
-        }
+    public function getConnection() {
+        return $this->db;
     }
     
-    public static function executeQuery($sql, $params = [], $types = "") {
-        $conn = self::getConnection();
-        $stmt = $conn->prepare($sql);
-        
-        if (!$stmt) {
-            throw new Exception("خطأ في إعداد الاستعلام: " . $conn->error);
-        }
-        
-        if (!empty($params)) {
-            $stmt->bind_param($types, ...$params);
-        }
-        
-        if (!$stmt->execute()) {
-            throw new Exception("خطأ في تنفيذ الاستعلام: " . $stmt->error);
-        }
-        
-        $result = $stmt->get_result();
-        $stmt->close();
-        
-        return $result;
-    }
-    
-    public static function executeUpdate($sql, $params = [], $types = "") {
-        $conn = self::getConnection();
-        $stmt = $conn->prepare($sql);
-        
-        if (!$stmt) {
-            throw new Exception("خطأ في إعداد الاستعلام: " . $conn->error);
-        }
-        
-        if (!empty($params)) {
-            $stmt->bind_param($types, ...$params);
-        }
-        
-        $success = $stmt->execute();
-        $affected_rows = $stmt->affected_rows;
-        $insert_id = $conn->insert_id;
-        
-        $stmt->close();
-        
-        return [
-            'success' => $success,
-            'affected_rows' => $affected_rows,
-            'insert_id' => $insert_id
+    private function create_tables() {
+        $tables = [
+            "CREATE TABLE IF NOT EXISTS products (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT NOT NULL,
+                description TEXT,
+                price REAL NOT NULL,
+                category TEXT,
+                image TEXT,
+                stock INTEGER DEFAULT 100,
+                is_active INTEGER DEFAULT 1,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )",
+            
+            "CREATE TABLE IF NOT EXISTS customers (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT NOT NULL,
+                email TEXT UNIQUE,
+                phone TEXT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )",
+            
+            "CREATE TABLE IF NOT EXISTS orders (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                order_number TEXT UNIQUE,
+                customer_id INTEGER,
+                total_amount REAL NOT NULL,
+                status TEXT DEFAULT 'pending',
+                payment_method TEXT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )",
+            
+            "CREATE TABLE IF NOT EXISTS order_items (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                order_id INTEGER,
+                product_id INTEGER,
+                quantity INTEGER,
+                price REAL,
+                FOREIGN KEY (order_id) REFERENCES orders(id),
+                FOREIGN KEY (product_id) REFERENCES products(id)
+            )"
         ];
-    }
-    
-    public static function getSingle($sql, $params = [], $types = "") {
-        $result = self::executeQuery($sql, $params, $types);
-        return $result->fetch_assoc();
-    }
-    
-    public static function getAll($sql, $params = [], $types = "") {
-        $result = self::executeQuery($sql, $params, $types);
-        $rows = [];
         
-        while ($row = $result->fetch_assoc()) {
-            $rows[] = $row;
+        foreach ($tables as $table) {
+            $this->db->exec($table);
         }
+    }
+    
+    private function seed_data() {
+        // التحقق مما إذا كانت الجداول فارغة
+        $count = $this->db->querySingle("SELECT COUNT(*) FROM products");
         
-        return $rows;
-    }
-    
-    public static function beginTransaction() {
-        $conn = self::getConnection();
-        $conn->begin_transaction();
-    }
-    
-    public static function commit() {
-        $conn = self::getConnection();
-        $conn->commit();
-    }
-    
-    public static function rollback() {
-        $conn = self::getConnection();
-        $conn->rollback();
-    }
-    
-    public static function escape($string) {
-        $conn = self::getConnection();
-        return $conn->real_escape_string($string);
-    }
-    
-    public static function lastInsertId() {
-        $conn = self::getConnection();
-        return $conn->insert_id;
+        if ($count == 0) {
+            $products = [
+                ['بطاقة ستيم 50$', 'بطاقة رصيد ستيم بقيمة 50 دولار', 50, 'ألعاب', 'steam.jpg'],
+                ['نيتفلكس شهري', 'اشتراك نيتفلكس لمدة شهر', 35, 'اشتراكات', 'netflix.jpg'],
+                ['بطاقة آيتونز 25$', 'رصيد آيتونز بقيمة 25 دولار', 25, 'متاجر', 'itunes.jpg'],
+                ['بلايستيشن بلس 3 أشهر', 'اشتراك بلايستيشن لمدة 3 أشهر', 180, 'ألعاب', 'playstation.jpg'],
+                ['بطاقة جوجل بلاي 100$', 'رصيد جوجل بلاي', 100, 'متاجر', 'googleplay.jpg'],
+                ['أمازون 200$', 'بطاقة هدايا أمازون', 200, 'متاجر', 'amazon.jpg']
+            ];
+            
+            $stmt = $this->db->prepare("
+                INSERT INTO products (name, description, price, category, image) 
+                VALUES (?, ?, ?, ?, ?)
+            ");
+            
+            foreach ($products as $product) {
+                $stmt->bindValue(1, $product[0], SQLITE3_TEXT);
+                $stmt->bindValue(2, $product[1], SQLITE3_TEXT);
+                $stmt->bindValue(3, $product[2], SQLITE3_FLOAT);
+                $stmt->bindValue(4, $product[3], SQLITE3_TEXT);
+                $stmt->bindValue(5, $product[4], SQLITE3_TEXT);
+                $stmt->execute();
+            }
+        }
     }
 }
 
-// إنشاء اتصال تلقائي
-$conn = Database::getConnection();
-
-// تسجيل الخطأ إذا كان هناك مشكلة في الاتصال
-if ($conn->connect_error) {
-    error_log("فشل الاتصال بقاعدة البيانات: " . $conn->connect_error);
-}
+// كائن قاعدة البيانات العام
+$db = DatabaseConnection::getInstance()->getConnection();
 ?>
