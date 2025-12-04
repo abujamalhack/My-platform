@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جميع المنتجات - كاردي | متجر البطاقات الرقمي</title>
+    
+    <!-- CSS Files -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-credit-card me-2"></i>
+                <span class="brand-text">كاردي</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home me-1"></i>
+                            الرئيسية
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="products.html">
+                            <i class="fas fa-gamepad me-1"></i>
+                            جميع المنتجات
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-th-large me-1"></i>
+                            الفئات
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="products.html?category=games">شحن الألعاب</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=subscriptions">الاشتراكات</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=shopping">بطاقات التسوق</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=mobile">شحن الاتصالات</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="order-tracking.html">
+                            <i class="fas fa-truck me-1"></i>
+                            تتبع الطلب
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">
+                            <i class="fas fa-headset me-1"></i>
+                            الدعم الفني
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex align-items-center">
+                    <!-- زر البحث -->
+                    <div class="search-container me-3">
+                        <div class="search-box">
+                            <input type="text" class="search-input" placeholder="ابحث عن منتج...">
+                            <button class="search-btn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <div class="search-results"></div>
+                    </div>
+                    
+                    <!-- سلة التسوق -->
+                    <a href="cart.html" class="cart-icon me-3">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    
+                    <!-- زر المستخدم -->
+                    <div class="dropdown">
+                        <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user me-1"></i>
+                            حسابي
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">تسجيل الدخول</a></li>
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#registerModal">إنشاء حساب</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="order-tracking.html">تتبع الطلبات</a></li>
+                            <li><a class="dropdown-item" href="admin/index.html">لوحة التحكم</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- رأس الصفحة -->
+    <section class="page-header bg-primary text-white py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-5 fw-bold mb-3">جميع المنتجات</h1>
+                    <p class="lead mb-0">اختر من بين مجموعة واسعة من البطاقات الرقمية والاشتراكات</p>
+                </div>
+                <div class="col-lg-6 text-lg-end">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-lg-end">
+                            <li class="breadcrumb-item"><a href="index.html" class="text-white">الرئيسية</a></li>
+                            <li class="breadcrumb-item active text-white" aria-current="page">المنتجات</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الفلترة والبحث -->
+    <section class="filters-section py-4 bg-light">
+        <div class="container">
+            <div class="row g-3">
+                <!-- فلترة حسب الفئة -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="filter-group">
+                        <label class="form-label fw-bold">الفئة</label>
+                        <select class="form-select" id="categoryFilter">
+                            <option value="all">جميع الفئات</option>
+                            <option value="games">شحن الألعاب</option>
+                            <option value="subscriptions">الاشتراكات</option>
+                            <option value="shopping">بطاقات التسوق</option>
+                            <option value="mobile">شحن الاتصالات</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- فلترة حسب السعر -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="filter-group">
+                        <label class="form-label fw-bold">السعر</label>
+                        <select class="form-select" id="priceFilter">
+                            <option value="all">جميع الأسعار</option>
+                            <option value="0-50">أقل من 50 ريال</option>
+                            <option value="50-100">50 - 100 ريال</option>
+                            <option value="100-500">100 - 500 ريال</option>
+                            <option value="500+">أكثر من 500 ريال</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- فلترة حسب التوصيل -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="filter-group">
+                        <label class="form-label fw-bold">وقت التوصيل</label>
+                        <select class="form-select" id="deliveryFilter">
+                            <option value="all">جميع الأوقات</option>
+                            <option value="instant">فوري</option>
+                            <option value="5min">خلال 5 دقائق</option>
+                            <option value="10min">خلال 10 دقائق</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- فلترة حسب الترتيب -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="filter-group">
+                        <label class="form-label fw-bold">ترتيب حسب</label>
+                        <select class="form-select" id="sortFilter">
+                            <option value="default">الأكثر مبيعاً</option>
+                            <option value="price_asc">السعر: من الأقل للأعلى</option>
+                            <option value="price_desc">السعر: من الأعلى للأقل</option>
+                            <option value="name_asc">الاسم: أ-ي</option>
+                            <option value="name_desc">الاسم: ي-أ</option>
+                            <option value="newest">الأحدث</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- فلتر متقدم -->
+            <div class="row mt-3">
+                <div class="col-12">
+                    <div class="advanced-filters">
+                        <button class="btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#moreFilters">
+                            <i class="fas fa-filter me-1"></i>
+                            فلتر متقدم
+                        </button>
+                        
+                        <div class="collapse" id="moreFilters">
+                            <div class="card card-body mt-2">
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <label class="form-label">المزود</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="xena" id="providerXena">
+                                            <label class="form-check-label" for="providerXena">
+                                                Xena Live
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="steam" id="providerSteam">
+                                            <label class="form-check-label" for="providerSteam">
+                                                Steam
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="netflix" id="providerNetflix">
+                                            <label class="form-check-label" for="providerNetflix">
+                                                Netflix
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-4">
+                                        <label class="form-label">العروض</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="discount" id="filterDiscount">
+                                            <label class="form-check-label" for="filterDiscount">
+                                                منتجات مخفضة
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="featured" id="filterFeatured">
+                                            <label class="form-check-label" for="filterFeatured">
+                                                مميز
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="new" id="filterNew">
+                                            <label class="form-check-label" for="filterNew">
+                                                جديد
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-4">
+                                        <label class="form-label">المخزون</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="in_stock" id="filterStock">
+                                            <label class="form-check-label" for="filterStock">
+                                                متوفر
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="low_stock" id="filterLowStock">
+                                            <label class="form-check-label" for="filterLowStock">
+                                                كمية محدودة
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-3">
+                                    <button class="btn btn-primary" id="applyFilters">
+                                        <i class="fas fa-check me-1"></i>
+                                        تطبيق الفلتر
+                                    </button>
+                                    <button class="btn btn-outline-secondary ms-2" id="resetFilters">
+                                        <i class="fas fa-redo me-1"></i>
+                                        إعادة تعيين
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المنتجات -->
+    <section class="products-section py-5">
+        <div class="container">
+            <!-- معلومات النتائج -->
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <div class="results-info">
+                        <span class="text-muted">عرض</span>
+                        <span id="resultsCount" class="fw-bold">24</span>
+                        <span class="text-muted">من</span>
+                        <span id="totalProducts" class="fw-bold">24</span>
+                        <span class="text-muted">منتج</span>
+                    </div>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="view-options">
+                        <button class="btn btn-outline-secondary active" id="gridView">
+                            <i class="fas fa-th-large"></i>
+                        </button>
+                        <button class="btn btn-outline-secondary ms-2" id="listView">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- المنتجات -->
+            <div class="row" id="productsContainer">
+                <!-- سيتم ملؤها بالمنتجات عبر JavaScript -->
+            </div>
+            
+            <!-- الترقيم الصفحي -->
+            <nav aria-label="Page navigation" class="mt-5">
+                <ul class="pagination justify-content-center" id="pagination">
+                    <!-- سيتم ملؤها عبر JavaScript -->
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <!-- قسم العروض الخاصة -->
+    <section class="special-offers py-5 bg-warning bg-opacity-10">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="section-title">عروض خاصة</h2>
+                <p class="section-subtitle">استفد من هذه العروض لفترة محدودة</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="offer-card bg-primary text-white">
+                        <div class="offer-icon">
+                            <i class="fas fa-percentage"></i>
+                        </div>
+                        <div class="offer-content">
+                            <h4>خصم 20%</h4>
+                            <p>على جميع بطاقات الألعاب عند الشراء لأول مرة</p>
+                            <small>ينتهي العرض: 31/12/2024</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="offer-card bg-success text-white">
+                        <div class="offer-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <div class="offer-content">
+                            <h4>هدية مجانية</h4>
+                            <p>احصل على بطاقة إضافية مع كل عملية شراء تتجاوز 200 ريال</p>
+                            <small>عرض محدود</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="offer-card bg-danger text-white">
+                        <div class="offer-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="offer-content">
+                            <h4>توصيل مجاني</h4>
+                            <p>توصيل فوري مجاني لجميع المشتريات</p>
+                            <small>دائماً متاح</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer class="footer bg-dark text-white pt-5">
+        <!-- نفس الفوتر من الصفحة الرئيسية -->
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-brand">
+                        <a href="index.html" class="navbar-brand footer-logo">
+                            <i class="fas fa-credit-card me-2"></i>
+                            كاردي
+                        </a>
+                        <p class="footer-description">
+                            منصة كاردي الرائدة في بيع البطاقات الرقمية في الوطن العربي. 
+                            نقدم أفضل الخدمات بأعلى معايير الجودة والأمان.
+                        </p>
+                        
+                        <div class="social-links">
+                            <a href="#" class="social-link">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4">
+                    <div class="footer-links">
+                        <h5>روابط سريعة</h5>
+                        <ul>
+                            <li><a href="index.html">الرئيسية</a></li>
+                            <li><a href="products.html">جميع المنتجات</a></li>
+                            <li><a href="products.html?category=games">شحن الألعاب</a></li>
+                            <li><a href="products.html?category=subscriptions">الاشتراكات</a></li>
+                            <li><a href="products.html?category=shopping">بطاقات التسوق</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4">
+                    <div class="footer-links">
+                        <h5>خدمة العملاء</h5>
+                        <ul>
+                            <li><a href="contact.html">اتصل بنا</a></li>
+                            <li><a href="order-tracking.html">تتبع الطلب</a></li>
+                            <li><a href="#">الأسئلة الشائعة</a></li>
+                            <li><a href="#">الشروط والأحكام</a></li>
+                            <li><a href="#">سياسة الخصوصية</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-4">
+                    <div class="footer-contact">
+                        <h5>معلومات الاتصال</h5>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>الرياض، المملكة العربية السعودية</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fab fa-whatsapp"></i>
+                                <a href="https://wa.me/967778657708">+967 77 865 7708</a>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:info@cardy.com">info@cardy.com</a>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-clock"></i>
+                                <span>مفتوح 24/7</span>
+                            </div>
+                        </div>
+                        
+                        <div class="newsletter">
+                            <h6>اشترك في النشرة الإخبارية</h6>
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="بريدك الإلكتروني">
+                                <button class="btn btn-primary">اشتراك</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="footer-divider">
+            
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="copyright">
+                            &copy; 2024 كاردي. جميع الحقوق محفوظة.
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="payment-methods-footer">
+                            <span>الدفع الآمن بواسطة:</span>
+                            <i class="fab fa-cc-visa"></i>
+                            <i class="fab fa-cc-mastercard"></i>
+                            <i class="fab fa-cc-paypal"></i>
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- زر العودة للأعلى -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- نافذة تسجيل الدخول -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">تسجيل الدخول</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">البريد الإلكتروني</label>
+                            <input type="email" class="form-control" id="loginEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">كلمة المرور</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">تذكرني</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">تسجيل الدخول</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <a href="#" class="text-decoration-none">نسيت كلمة المرور؟</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة إنشاء حساب -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">إنشاء حساب جديد</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="registerForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="registerName" class="form-label">الاسم الكامل</label>
+                                <input type="text" class="form-control" id="registerName" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="registerPhone" class="form-label">رقم الهاتف</label>
+                                <input type="tel" class="form-control" id="registerPhone" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label">البريد الإلكتروني</label>
+                            <input type="email" class="form-control" id="registerEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">كلمة المرور</label>
+                            <input type="password" class="form-control" id="registerPassword" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerConfirmPassword" class="form-label">تأكيد كلمة المرور</label>
+                            <input type="password" class="form-control" id="registerConfirmPassword" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="agreeTerms" required>
+                            <label class="form-check-label" for="agreeTerms">
+                                أوافق على <a href="#" class="text-decoration-none">الشروط والأحكام</a>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">إنشاء الحساب</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/products.js"></script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إتمام الطلب - كاردي</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-credit-card me-2"></i>
+                كاردي
+            </a>
+            <div class="navbar-collapse">
+                <div class="navbar-nav ms-auto">
+                    <div class="nav-item">
+                        <a href="cart.html" class="nav-link">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5 pt-5">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- خطوات الطلب -->
+                <div class="checkout-steps mb-5">
+                    <div class="steps">
+                        <div class="step active">
+                            <div class="step-number">1</div>
+                            <div class="step-label">المعلومات</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-label">الشحن</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-label">الدفع</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-label">التأكيد</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- معلومات العميل -->
+                <div class="checkout-form">
+                    <form id="checkoutForm">
+                        <!-- معلومات الاتصال -->
+                        <div class="form-section mb-4">
+                            <h4 class="section-title">
+                                <i class="fas fa-user me-2"></i>
+                                معلومات الاتصال
+                            </h4>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="form-label">الاسم الكامل *</label>
+                                    <input type="text" class="form-control" name="full_name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">البريد الإلكتروني *</label>
+                                    <input type="email" class="form-control" name="email" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">رقم الهاتف *</label>
+                                    <input type="tel" class="form-control" name="phone" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">البلد *</label>
+                                    <select class="form-select" name="country" required>
+                                        <option value="">اختر البلد</option>
+                                        <option value="SA">السعودية</option>
+                                        <option value="AE">الإمارات</option>
+                                        <option value="QA">قطر</option>
+                                        <option value="KW">الكويت</option>
+                                        <option value="OM">عُمان</option>
+                                        <option value="BH">البحرين</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- طريقة الدفع -->
+                        <div class="form-section mb-4">
+                            <h4 class="section-title">
+                                <i class="fas fa-credit-card me-2"></i>
+                                طريقة الدفع
+                            </h4>
+                            <div class="payment-methods">
+                                <div class="form-check payment-method">
+                                    <input class="form-check-input" type="radio" name="payment_method" value="mada" id="mada" checked>
+                                    <label class="form-check-label" for="mada">
+                                        <i class="fas fa-credit-card me-2"></i>
+                                        مدى / فيزا / ماستركارد
+                                    </label>
+                                </div>
+                                <div class="form-check payment-method">
+                                    <input class="form-check-input" type="radio" name="payment_method" value="apple_pay" id="apple_pay">
+                                    <label class="form-check-label" for="apple_pay">
+                                        <i class="fab fa-apple-pay me-2"></i>
+                                        Apple Pay
+                                    </label>
+                                </div>
+                                <div class="form-check payment-method">
+                                    <input class="form-check-input" type="radio" name="payment_method" value="stc_pay" id="stc_pay">
+                                    <label class="form-check-label" for="stc_pay">
+                                        <i class="fas fa-mobile-alt me-2"></i>
+                                        STC Pay
+                                    </label>
+                                </div>
+                                <div class="form-check payment-method">
+                                    <input class="form-check-input" type="radio" name="payment_method" value="bank_transfer" id="bank_transfer">
+                                    <label class="form-check-label" for="bank_transfer">
+                                        <i class="fas fa-university me-2"></i>
+                                        تحويل بنكي
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- تفاصيل البطاقة -->
+                        <div class="card-details" id="cardDetails">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="form-label">رقم البطاقة *</label>
+                                    <input type="text" class="form-control" name="card_number" placeholder="1234 5678 9012 3456">
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label">تاريخ الانتهاء *</label>
+                                    <input type="text" class="form-control" name="expiry_date" placeholder="MM/YY">
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label">CVV *</label>
+                                    <input type="text" class="form-control" name="cvv" placeholder="123">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ملاحظات -->
+                        <div class="form-section mb-4">
+                            <h4 class="section-title">
+                                <i class="fas fa-sticky-note me-2"></i>
+                                ملاحظات على الطلب
+                            </h4>
+                            <textarea class="form-control" name="notes" rows="3" placeholder="ملاحظات خاصة على الطلب (اختياري)"></textarea>
+                        </div>
+
+                        <!-- الاتفاقيات -->
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+                            <label class="form-check-label" for="agreeTerms">
+                                أوافق على <a href="#" class="text-primary">الشروط والأحكام</a> و <a href="#" class="text-primary">سياسة الخصوصية</a>
+                            </label>
+                        </div>
+
+                        <!-- أزرار -->
+                        <div class="d-flex justify-content-between">
+                            <a href="cart.html" class="btn btn-outline-primary">
+                                <i class="fas fa-arrow-right me-2"></i>
+                                العودة للسلة
+                            </a>
+                            <button type="submit" class="btn btn-primary btn-lg" id="completeOrder">
+                                <i class="fas fa-lock me-2"></i>
+                                تأكيد الطلب والدفع
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="order-summary sticky-top">
+                    <h4 class="summary-title">ملخص طلبك</h4>
+                    
+                    <div class="order-items" id="orderSummary">
+                        <!-- سيتم تعبئتها بـ JavaScript -->
+                    </div>
+
+                    <div class="summary-totals">
+                        <div class="total-row">
+                            <span>المجموع الفرعي</span>
+                            <span id="orderSubtotal">0 ر.س</span>
+                        </div>
+                        <div class="total-row">
+                            <span>الخصم</span>
+                            <span id="orderDiscount">0 ر.س</span>
+                        </div>
+                        <div class="total-row">
+                            <span>الضريبة</span>
+                            <span id="orderTax">0 ر.س</span>
+                        </div>
+                        <div class="total-row grand-total">
+                            <strong>المجموع النهائي</strong>
+                            <strong id="orderTotal">0 ر.س</strong>
+                        </div>
+                    </div>
+
+                    <div class="support-info mt-4">
+                        <h5><i class="fas fa-headset me-2"></i>هل تحتاج مساعدة؟</h5>
+                        <p>فريق الدعم متاح 24/7 لمساعدتك</p>
+                        <a href="https://wa.me/967778657708" class="btn btn-success w-100">
+                            <i class="fab fa-whatsapp me-2"></i>
+                            محادثة واتساب
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="footer bg-dark text-white pt-5">
+        <!-- ... نفس كود الفوتر ... -->
+    </footer>
+
+    <!-- نافذة تأكيد الطلب -->
+    <div class="modal fade" id="orderConfirmModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">تأكيد الطلب</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <i class="fas fa-check-circle fa-4x text-success mb-3"></i>
+                    <h4>تم تأكيد طلبك بنجاح!</h4>
+                    <p id="orderNumber">رقم الطلب: <strong>#ORD-123456</strong></p>
+                    <p class="text-muted">سيتم إرسال تفاصيل الطلب إلى بريدك الإلكتروني</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <a href="order-tracking.html" class="btn btn-primary">تتبع طلبي</a>
+                    <a href="index.html" class="btn btn-outline-primary">العودة للرئيسية</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/checkout.js"></script>
+</body>
+</html>

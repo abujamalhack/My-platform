@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كاردي - متجر البطاقات الرقمي | الأفضل في الوطن العربي</title>
+    <meta name="description" content="اشترِ بطاقات الألعاب، الاشتراكات، وبطاقات التسوق الرقمية بأفضل الأسعار. توصيل فوري وآمن.">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+</head>
+<body>
+    <!-- شريط التنقل العلوي -->
+    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-credit-card me-2"></i>
+                <span class="brand-text">كاردي</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">
+                            <i class="fas fa-home me-1"></i>
+                            الرئيسية
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">
+                            <i class="fas fa-gamepad me-1"></i>
+                            شحن الألعاب
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html?category=subscriptions">
+                            <i class="fas fa-film me-1"></i>
+                            الاشتراكات
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html?category=shopping">
+                            <i class="fas fa-shopping-bag me-1"></i>
+                            بطاقات التسوق
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">
+                            <i class="fas fa-headset me-1"></i>
+                            الدعم الفني
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex align-items-center">
+                    <!-- زر البحث -->
+                    <div class="search-container me-3">
+                        <div class="search-box">
+                            <input type="text" class="search-input" placeholder="ابحث عن منتج...">
+                            <button class="search-btn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <div class="search-results"></div>
+                    </div>
+                    
+                    <!-- سلة التسوق -->
+                    <a href="cart.html" class="cart-icon me-3">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    
+                    <!-- زر المستخدم -->
+                    <div class="dropdown">
+                        <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user me-1"></i>
+                            حسابي
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">تسجيل الدخول</a></li>
+                            <li><a class="dropdown-item" href="#">إنشاء حساب</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="order-tracking.html">تتبع الطلبات</a></li>
+                            <li><a class="dropdown-item" href="admin/index.html">لوحة التحكم</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- قسم الهيرو -->
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1 class="hero-title animate-fade-in">
+                            اشترِ <span class="highlight">بطاقاتك الرقمية</span> 
+                            <br>بأمان وسرعة فائقة
+                        </h1>
+                        <p class="hero-subtitle animate-fade-in-delay">
+                            أكبر منصة لبيع البطاقات الرقمية في الوطن العربي. 
+                            رصيد الألعاب، اشتراكات المنصات، بطاقات التسوق والكثير أكثر.
+                            توصيل فوري وآمن 100%.
+                        </p>
+                        
+                        <div class="hero-stats animate-fade-in-delay-2">
+                            <div class="stat-item">
+                                <span class="stat-number">50,000+</span>
+                                <span class="stat-label">عميل سعيد</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">200+</span>
+                                <span class="stat-label">نوع بطاقة</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">24/7</span>
+                                <span class="stat-label">دعم فني</span>
+                            </div>
+                        </div>
+                        
+                        <div class="hero-buttons animate-fade-in-delay-3">
+                            <a href="products.html" class="btn btn-primary btn-lg me-3">
+                                <i class="fas fa-shopping-bag me-2"></i>
+                                تسوق الآن
+                            </a>
+                            <a href="#features" class="btn btn-outline-light btn-lg">
+                                <i class="fas fa-play-circle me-2"></i>
+                                شاهد الفيديو
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="hero-image-container">
+                        <div class="floating-card card-1">
+                            <i class="fab fa-google-play"></i>
+                            <span>Google Play</span>
+                        </div>
+                        <div class="floating-card card-2">
+                            <i class="fab fa-apple"></i>
+                            <span>Apple Store</span>
+                        </div>
+                        <div class="floating-card card-3">
+                            <i class="fab fa-xbox"></i>
+                            <span>Xbox Live</span>
+                        </div>
+                        <div class="floating-card card-4">
+                            <i class="fab fa-playstation"></i>
+                            <span>PlayStation</span>
+                        </div>
+                        <div class="main-hero-image">
+                            <img src="images/hero-main.png" alt="بطاقات رقمية" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- موج متحرك -->
+        <div class="wave-divider">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- قسم الفئات -->
+    <section id="categories" class="categories-section py-5">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="section-title">فئات المنتجات</h2>
+                <p class="section-subtitle">اختر من بين مجموعة واسعة من البطاقات الرقمية</p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- فئة شحن الألعاب -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="category-card" data-category="games">
+                        <div class="category-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <div class="category-content">
+                            <h4>شحن الألعاب</h4>
+                            <p>رصيد لأشهر الألعاب الإلكترونية حول العالم</p>
+                            <ul class="category-features">
+                                <li>Xena Live</li>
+                                <li>PlayStation</li>
+                                <li>Xbox Live</li>
+                                <li>Steam</li>
+                            </ul>
+                        </div>
+                        <div class="category-footer">
+                            <span class="product-count">45 منتج</span>
+                            <a href="products.html?category=games" class="category-link">
+                                <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- فئة الاشتراكات -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="category-card" data-category="subscriptions">
+                        <div class="category-icon">
+                            <i class="fas fa-film"></i>
+                        </div>
+                        <div class="category-content">
+                            <h4>اشتراكات المنصات</h4>
+                            <p>اشتراكات شهرية وسنوية لأفضل منصات الترفيه</p>
+                            <ul class="category-features">
+                                <li>Netflix</li>
+                                <li>Spotify</li>
+                                <li>Shahid VIP</li>
+                                <li>Apple Music</li>
+                            </ul>
+                        </div>
+                        <div class="category-footer">
+                            <span class="product-count">32 منتج</span>
+                            <a href="products.html?category=subscriptions" class="category-link">
+                                <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- فئة بطاقات التسوق -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="category-card" data-category="shopping">
+                        <div class="category-icon">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                        <div class="category-content">
+                            <h4>بطاقات التسوق</h4>
+                            <p>بطاقات هدايا للتسوق من أشهر المتاجر العالمية</p>
+                            <ul class="category-features">
+                                <li>Apple Store</li>
+                                <li>Google Play</li>
+                                <li>Amazon</li>
+                                <li>Nike</li>
+                            </ul>
+                        </div>
+                        <div class="category-footer">
+                            <span class="product-count">28 منتج</span>
+                            <a href="products.html?category=shopping" class="category-link">
+                                <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- فئة شحن الاتصالات -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="category-card" data-category="mobile">
+                        <div class="category-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="category-content">
+                            <h4>شحن الاتصالات</h4>
+                            <p>رصيد لشركات الاتصال والهواتف المحمولة</p>
+                            <ul class="category-features">
+                                <li>STC</li>
+                                <li>Mobily</li>
+                                <li>Zain</li>
+                                <li>Virgin Mobile</li>
+                            </ul>
+                        </div>
+                        <div class="category-footer">
+                            <span class="product-count">15 منتج</span>
+                            <a href="products.html?category=mobile" class="category-link">
+                                <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المنتجات المميزة -->
+    <section class="featured-products py-5 bg-light">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="section-title">المنتجات الأكثر مبيعاً</h2>
+                <p class="section-subtitle">اختر من بين أفضل المنتجات طلباً</p>
+            </div>
+            
+            <div class="row g-4" id="featured-products-container">
+                <!-- سيتم ملؤها بالمنتجات المميزة عبر JavaScript -->
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="products.html" class="btn btn-outline-primary btn-lg">
+                    <i class="fas fa-grid me-2"></i>
+                    عرض جميع المنتجات
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المميزات -->
+    <section id="features" class="features-section py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <div class="features-content">
+                        <h2 class="features-title">لماذا تختار <span class="highlight">كاردي</span>؟</h2>
+                        <p class="features-description">
+                            نحن نقدم أفضل تجربة تسوق رقمية مع ضمان الجودة والسرعة في التوصيل
+                        </p>
+                        
+                        <div class="features-list">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h5>توصيل فوري</h5>
+                                    <p>استلم بطاقتك فوراً بعد تأكيد الدفع</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h5>آمن 100%</h5>
+                                    <p>معاملات مشفرة وأنظمة أمان متطورة</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-headset"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h5>دعم فني 24/7</h5>
+                                    <p>فريق دعم متاح على مدار الساعة</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-tags"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h5>أسعار تنافسية</h5>
+                                    <p>أفضل الأسعار مع عروض وتخفيضات دائمة</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="features-image">
+                        <img src="images/features-image.png" alt="مميزات كاردي" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم طرق الدفع -->
+    <section class="payment-methods py-5 bg-dark text-white">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="section-title">طرق الدفع المتاحة</h2>
+                <p class="section-subtitle">ادفع بالطريقة التي تناسبك</p>
+            </div>
+            
+            <div class="row g-4 justify-content-center">
+                <div class="col-auto">
+                    <div class="payment-method">
+                        <i class="fab fa-cc-apple-pay"></i>
+                        <span>Apple Pay</span>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="payment-method">
+                        <i class="fab fa-cc-visa"></i>
+                        <span>Visa</span>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="payment-method">
+                        <i class="fab fa-cc-mastercard"></i>
+                        <span>MasterCard</span>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="payment-method">
+                        <i class="fab fa-cc-paypal"></i>
+                        <span>PayPal</span>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="payment-method">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>STC Pay</span>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="payment-method">
+                        <i class="fas fa-university"></i>
+                        <span>تحويل بنكي</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الدعم والاتصال -->
+    <section class="support-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <div class="support-content">
+                        <h3>هل تحتاج مساعدة؟</h3>
+                        <p class="support-text">فريق الدعم الفني لدينا متاح على مدار 24 ساعة لمساعدتك في أي استفسار</p>
+                        
+                        <div class="support-methods">
+                            <div class="support-method">
+                                <div class="support-icon">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div class="support-info">
+                                    <h5>الدعم عبر الواتساب</h5>
+                                    <a href="https://wa.me/967778657708" class="support-link">
+                                        +967 77 865 7708
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="support-method">
+                                <div class="support-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="support-info">
+                                    <h5>البريد الإلكتروني</h5>
+                                    <a href="mailto:support@cardy.com" class="support-link">
+                                        support@cardy.com
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="support-method">
+                                <div class="support-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="support-info">
+                                    <h5>أوقات العمل</h5>
+                                    <span>24/7 على مدار الساعة</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="support-image text-center">
+                        <img src="images/support-team.png" alt="فريق الدعم" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer class="footer bg-dark text-white pt-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-brand">
+                        <a href="index.html" class="navbar-brand footer-logo">
+                            <i class="fas fa-credit-card me-2"></i>
+                            كاردي
+                        </a>
+                        <p class="footer-description">
+                            منصة كاردي الرائدة في بيع البطاقات الرقمية في الوطن العربي. 
+                            نقدم أفضل الخدمات بأعلى معايير الجودة والأمان.
+                        </p>
+                        
+                        <div class="social-links">
+                            <a href="#" class="social-link">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4">
+                    <div class="footer-links">
+                        <h5>روابط سريعة</h5>
+                        <ul>
+                            <li><a href="index.html">الرئيسية</a></li>
+                            <li><a href="products.html">جميع المنتجات</a></li>
+                            <li><a href="products.html?category=games">شحن الألعاب</a></li>
+                            <li><a href="products.html?category=subscriptions">الاشتراكات</a></li>
+                            <li><a href="products.html?category=shopping">بطاقات التسوق</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-4">
+                    <div class="footer-links">
+                        <h5>خدمة العملاء</h5>
+                        <ul>
+                            <li><a href="contact.html">اتصل بنا</a></li>
+                            <li><a href="order-tracking.html">تتبع الطلب</a></li>
+                            <li><a href="#">الأسئلة الشائعة</a></li>
+                            <li><a href="#">الشروط والأحكام</a></li>
+                            <li><a href="#">سياسة الخصوصية</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-4">
+                    <div class="footer-contact">
+                        <h5>معلومات الاتصال</h5>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>الرياض، المملكة العربية السعودية</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fab fa-whatsapp"></i>
+                                <a href="https://wa.me/967778657708">+967 77 865 7708</a>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:info@cardy.com">info@cardy.com</a>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-clock"></i>
+                                <span>مفتوح 24/7</span>
+                            </div>
+                        </div>
+                        
+                        <div class="newsletter">
+                            <h6>اشترك في النشرة الإخبارية</h6>
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="بريدك الإلكتروني">
+                                <button class="btn btn-primary">اشتراك</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="footer-divider">
+            
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="copyright">
+                            &copy; 2024 كاردي. جميع الحقوق محفوظة.
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="payment-methods-footer">
+                            <span>الدفع الآمن بواسطة:</span>
+                            <i class="fab fa-cc-visa"></i>
+                            <i class="fab fa-cc-mastercard"></i>
+                            <i class="fab fa-cc-paypal"></i>
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- زر العودة للأعلى -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
